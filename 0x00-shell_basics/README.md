@@ -1,1 +1,0 @@
-display absolute path name
