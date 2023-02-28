@@ -2,4 +2,8 @@
 # Displays listening ports. Includes listening sockets as well
 # + as the PID and name of the program to which each socket belongs.
 
+<<<<<<< HEAD
 netstat -1 --program
+=======
+netstat -l --program
+>>>>>>> 886d2ab7a1d1852f2b5e0c7a8b4659e00eb1a1b3

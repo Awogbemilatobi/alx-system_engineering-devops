@@ -3,7 +3,13 @@
 
 if [ $# -eq 0 ]
 then
+<<<<<<< HEAD
 	echo "Usage: 5-is_the_host_of_the_network {IP_ADDRESS}"
 else
 	ping -c 5 "$1"
+=======
+  echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+  ping -c 5 "$1"
+>>>>>>> 886d2ab7a1d1852f2b5e0c7a8b4659e00eb1a1b3
 fi
