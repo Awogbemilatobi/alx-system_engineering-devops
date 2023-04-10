@@ -3,16 +3,22 @@
 #   "bad luck from China" for the 4th iteration
 #   "bad luck from Japan" for the 9th iteration
 #   "bad luck from Italy" for the 17th loop iteration
-
-count=1
-
-while [ $count -le 20 ]
+n=0
+for n in {1..20}
 do
-  echo "$count"
-  case $count in
-    "4") echo "bad luck from China";;
-    "9") echo "bad luck from Japan";;
-    "17") echo "bad luck from Italy";;
-  esac
-  (( count++ ))
+        if [ $n == 4 ]
+        then    echo $n
+                echo "bad luck from china"
+        elif [ $n == 9 ]
+        then
+                echo $n
+                echo "bad luck from japan"
+        elif [ $n == 17 ]
+        then
+                echo $n
+                echo "bad luck from italy"
+        else
+                echo $n
+        fi
+        n=$((n+1))
 done
