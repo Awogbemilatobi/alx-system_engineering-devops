@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 # Displays information about the `school` file. 
 
-if [ -e "School" ]
+if [ -e "School" ] # checks for if file exists
 then
         echo "school file exists"
-        if [ -s "School" ]
+        if [ -s "School" ]  #checks for empty file
         then
                 echo "school file is empty"
         else
                 echo "school file is not empty"
         fi
 
-        if [ -f "School" ]
+        if [ -f "School" ] #checks if file is a regular file and not a directory
         then
                 echo "school is a regular file"
         fi
