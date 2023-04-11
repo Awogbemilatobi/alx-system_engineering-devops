@@ -2,7 +2,7 @@
 # Displays "To infinity and beyond" indefinitely with
 #+ a sleep 2 in between each iteration.
 
-while true
+for ((;;))
 do
   echo "To infinity and beyond"
   sleep 2
