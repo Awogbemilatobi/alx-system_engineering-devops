@@ -33,7 +33,7 @@ The server is accessible at [bdbnb.site](http://bdbnb.site).
 * **3. Redirection**
   * [3-redirection](./3-redirection): Bash script that configures a new Ubuntu
   machine with Nginx.
-  * Setup is identical to [1-install_nginx_web_server](./1-install_nginx_web_server)
+    * Setup is identical to [1-install_nginx_web_server](./1-install_nginx_web_server)
   plus:
     * The location `/redirect_me` returns a `301 Moved Permanently` redirection
     to another page.
@@ -65,3 +65,24 @@ The server is accessible at [bdbnb.site](http://bdbnb.site).
     of the remote server.
   * `clean`
     * Deletes the archive `holbertonwebapp.tar.gz` in the local directory.
+    
+    
+
+
+* **Step 1: Install Nginx**
+* sudo apt-get update
+  sudo apt-get install nginx
+  
+* **Step 2: Adjust the Firewall**
+* sudo ufw app list
+* sudo ufw allow 'Nginx HTTP'
+* sudo ufw status
+
+* **Step 3: Check your Web Server**
+* systemctl status nginx
+
+* **Step 4: Manage the Nginx Process**
+    * sudo systemctl stop nginx    #to stop web server
+    * sudo systemctl start nginx     #to start web server if it stops
+    * sudo systemctl restart nginx   #to stop and start
+    * sudo systemctl reload nginx # to simply reload
