@@ -33,7 +33,7 @@ The server is accessible at [bdbnb.site](http://bdbnb.site).
 * **3. Redirection**
   * [3-redirection](./3-redirection): Bash script that configures a new Ubuntu
   machine with Nginx.
-  * Setup is identical to [1-install_nginx_web_server](./1-install_nginx_web_server)
+    * Setup is identical to [1-install_nginx_web_server](./1-install_nginx_web_server)
   plus:
     * The location `/redirect_me` returns a `301 Moved Permanently` redirection
     to another page.
@@ -65,3 +65,62 @@ The server is accessible at [bdbnb.site](http://bdbnb.site).
     of the remote server.
   * `clean`
     * Deletes the archive `holbertonwebapp.tar.gz` in the local directory.
+    
+    
+
+
+* **Step 1: Install Nginx**
+* sudo apt-get update
+  sudo apt-get install nginx
+  
+* **Step 2: Adjust the Firewall**
+* sudo ufw app list
+* sudo ufw allow 'Nginx HTTP'
+* sudo ufw status
+
+* **Step 3: Check your Web Server**
+* systemctl status nginx
+
+* **Step 4: Manage the Nginx Process**
+    * sudo systemctl stop nginx    #to stop web server
+    * sudo systemctl start nginx     #to start web server if it stops
+    * sudo systemctl restart nginx   #to stop and start
+    * sudo systemctl reload nginx # to simply reload
+    
+    
+    
+* **How To Set Up Nginx Server Blocks (Virtual Hosts) on Ubuntu**
+    *sudo mkdir -p /var/www/example.com/html   #to create the directory
+    *sudo chown -R $USER:$USER /var/www/example.com/html #to assign ownership to the account
+    * sudo chmod -R 755 /var/www  #to enable write access
+    * vi /var/www/example.com/html/index.html
+    
+  **Step 3 — Creating Server Block Files for Each Domain**
+    *sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/example.com  #copy from default file to server block file but remove "default_server" from the file and also edit "root /var/www/example.com/html;" in the file
+    
+* **should look like this when you are done:*
+    
+   server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/example.com/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name example.com www.example.com;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+    *grep -R default_server /etc/nginx/sites-enabled/  # to ensure that the  default_server option is only enabled in a single active file
+    
+    **Step 4 — Enabling your Server Blocks and Restart Nginx**
+    *sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/
+    *sudo nano /etc/nginx/nginx.conf (edit to "server_names_hash_bucket_size 64;") #to avoid a possible hash bucket memory problem that can arise from adding additional server names.
+    *sudo nginx -t #test to make sure no syntax error
+    *sudo systemctl restart nginx  #enable changes
+    
+
